@@ -33,7 +33,7 @@ import matplotlib.pyplot  as plt
 
 
 #cargando nuestro conjunto de datos
-df = pd.read_csv("../datasets/forestfires.csv")
+df = pd.read_csv("../../datasets/forestfires.csv")
 
 #print("Imprimiendo la cabecera de nuestros datos")
 #print(df.head())
