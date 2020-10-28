@@ -15,7 +15,7 @@ from sklearn.linear_model import LinearRegression
 
 #importar una metrica para comparar el error entre
 #mis datos originales y mi prediccion
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 #1/n* sum((y_test[i] - y_pred[i])^2)
 
 
@@ -82,8 +82,11 @@ plt.ylabel("Prediccion")
 plt.show()
 
 mse = mean_squared_error(y_test, y_pred)
-print("Imprimiendo nuestro error de prediccion: "+str(mse))
-
+mae = mean_absolute_error(y_test, y_pred)
+r2score = r2_score(y_test, y_pred)
+print("Mean squared error: "+str(mse))
+print("Mean absolute error: "+str(mae))
+print("R^2: " + str(r2score))
 
 #un dato que no conozco
 #y_new = regressor.predict(X_new)

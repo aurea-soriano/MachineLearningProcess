@@ -11,6 +11,9 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 import tqdm
 
+from sklearn.metrics import roc_curve
+from sklearn.metrics import roc_auc_score
+
 # sigmoid function
 def sigmoid_function(inputs, weights):
     #input1 * weight1 + input2 * weight2 + input3*weight3....
@@ -140,4 +143,47 @@ for inputs, target in zip(X_test, y_test):
 plt.pie([correctly, wrong],
         labels=['correctly ({})'.format(correctly), 'wrong ({})'.format(wrong)],
         colors=['green', 'red'])
+plt.show()
+
+
+# Precision: TP / (TP+FP)
+#Porcentaje de predicciones positivas correctas
+precision = tp/(tp+fp)
+
+#Accuracy / exactitud
+#Porcentaje de predicciones correctas
+accuracy = (tp + tn)/(tp+tn+fp+fn)
+
+#recall - sensitivity
+#Porcentaje de instancias etiquetadas como positivas, que también fueron predichas como positivas
+recall = tp/(tp+fn)
+
+# Specificity
+#Porcentaje de instancias etiquetadas como negativas, que también fueron predichas como negativas
+
+specificity = tn / (tn+fp)
+
+
+# f1
+f1 = 2 *(precision*recall)/ (precision + recall)
+
+
+print("Precision "+ str(precision))
+print("Accuracy "+ str(accuracy))
+print("Recall " + str(recall))
+print("Specificity " + str(specificity))
+print("F1 " + str(f1))
+
+
+fpr, tpr, thresholds = roc_curve(y_test, pred_y)
+auc_perceptron = roc_auc_score(y_test, pred_y)
+print("auc " + str(auc_perceptron))
+
+
+y_test0= [0 for _ in range(len(y_test))]
+fpr0, tpr0, thresholds0 = roc_curve(y_test, y_test0)
+plt.plot(fpr0, tpr0, linestyle='--', label='No Skill')
+plt.plot(fpr, tpr, marker='.', label='ROC')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
 plt.show()
