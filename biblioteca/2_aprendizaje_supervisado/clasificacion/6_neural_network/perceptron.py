@@ -49,7 +49,13 @@ def fit(X,y, alpha=0.005, epochs=600, function='Sigmoid'):
                 error +=1
             elif output < 0.5 and target ==1: # target =0
                 error +=1
-                
+
+            #Wj = Wj + LR * Ij * Error
+            # Learning Rate: alpha (tasa de aprendizaje)
+            #Ij : instances
+            # Error :
+
+            #weights = weights +( alpha * (target - output) * (output) * (1-output) * inputs)
             weights += alpha * (target - output) * (output) * (1-output) * inputs
         errors.append(error)
     return weights, errors
