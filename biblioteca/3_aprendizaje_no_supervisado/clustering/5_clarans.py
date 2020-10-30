@@ -1,3 +1,10 @@
+"""
+.. biblioteca:: Clustering with Clarans
+   :plataforma: Unix, Windows, MAC
+   :sinopsis: Clustering
+.. autora:: Dra. Aurea Soriano <aurea.soriano@ic.unicamp.br>
+"""
+
 from pyclustering.cluster.clarans import clarans;
 from pyclustering.utils import timedcall;
 import numpy as np #para manipular os vetores
